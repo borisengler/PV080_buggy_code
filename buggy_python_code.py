@@ -14,7 +14,7 @@ def index():
 
 
 CONFIG = {"API_KEY": "771df488714111d39138eb60df756e6b"}
-class Person(object):
+class Person():
     def __init__(self, name):
         self.name = name
 
@@ -25,7 +25,8 @@ def print_nametag(format_string, person):
 
 def fetch_website(urllib_version, url):
     # Import the requested version (2 or 3) of urllib
-    exec(f"import urllib{urllib_version} as urllib", globals())
+    global urllib
+    urllib = __import__(f"urllib{urllib_version}")
     # Fetch and print the requested URL
  
     try:
